@@ -22,6 +22,7 @@ import org.json.JSONObject;
 
 
 
+import com.barnes.ronaldo.java2week2.InputFragment.InputListener;
 import com.barnes.ronaldo.java2week2.ResultOutput;
 import com.rbarnes.lib.FileInterface;
 import com.rbarnes.lib.WebInterface;
@@ -39,19 +40,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 @SuppressLint("ShowToast")
-public class MainInputForm extends Activity implements OnClickListener {
+public class MainInputForm extends Activity implements InputListener{
 
 	Context _context;
 	ArrayList<Dessert> _desserts;
@@ -59,34 +53,25 @@ public class MainInputForm extends Activity implements OnClickListener {
 	EditText _inputField;
 	Toast _toast;
 	JSONObject _tempLocation;
-	LinearLayout _inputLayout;
 	Button _inputButton;
 	int _buttonId;
 	Intent _resulutIntent;
 	String _picture;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.input_fragment);
-		_inputLayout = (LinearLayout)findViewById(R.id.InputFormLayout);
 		_context = this;
 		_resulutIntent = new Intent(this, ResultOutput.class);
 		_oldLocation = new HashMap<String, String>();
-		_inputButton = (Button)findViewById(R.id.inputButton);
-		//Detect form elements
-		_inputButton = (Button)findViewById(R.id.inputButton);
-		Button cookieButton = (Button)findViewById(R.id.cookieButton);
-		Button pieButton = (Button)findViewById(R.id.pieButton);
-		Button cakeButton = (Button)findViewById(R.id.cakeButton);
-		Button candyButton = (Button)findViewById(R.id.candyButton);
-		//Detect button click
-		cookieButton.setOnClickListener(this);
-		pieButton.setOnClickListener(this);
-		cakeButton.setOnClickListener(this);
-		candyButton.setOnClickListener(this);
-		_inputButton.setOnClickListener(this);
+		Boolean connected = WebInterface.getConnectionStatus(_context);
+		
+		if (!connected){
+			displayResults();
+		}
 	}
 
 	@Override
@@ -108,6 +93,7 @@ public class MainInputForm extends Activity implements OnClickListener {
 			finalURL = new URL(baseUrl);
 			LocationRequest lr = new LocationRequest();
 			lr.execute(finalURL);
+			Log.i("URL ", baseUrl);
 			
 		}catch(MalformedURLException e){
 			Log.e("BAD URL","MALFORMED URL");
@@ -168,41 +154,12 @@ public class MainInputForm extends Activity implements OnClickListener {
 			
 		}
 	}
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		RadioGroup inputGroup = (RadioGroup)findViewById(R.id.inputRadioGroup);
-		ImageView dessertView = (ImageView)findViewById(R.id.dessert_view);
-		switch(v.getId()){
-		//Submit Form
-		case R.id.inputButton:
-			//show results
-			int selectedButtonId = inputGroup.getCheckedRadioButtonId();
-			RadioButton selectedButton = (RadioButton) findViewById(selectedButtonId);
-			Spinner inputSpinner = (Spinner) findViewById(R.id.inputSpinner);
-			String buttonText = (String) selectedButton.getText();
-			String spinnerText = String.valueOf(inputSpinner.getSelectedItem());
-			getLocations(buttonText,spinnerText);
 
-		//Change image when button is pressed	
-		case R.id.cookieButton:
-			dessertView.setImageResource(R.drawable.cookies);
-			_resulutIntent.putExtra("Picture", "cakes");
-			break;
-		case R.id.pieButton:
-			dessertView.setImageResource(R.drawable.pies);
-			_resulutIntent.putExtra("Picture", "pies");
-			break;
-		case R.id.cakeButton:
-			dessertView.setImageResource(R.drawable.cakes);
-			_resulutIntent.putExtra("Picture", "cakes");
-			break;
-		case R.id.candyButton:
-			dessertView.setImageResource(R.drawable.candy);
-			_resulutIntent.putExtra("Picture", "candy");
-			break;
-			
-		}
+	@Override
+	public void onDessertSearch(String zipCode, String category) {
+		
+		getLocations(zipCode,category);
 	}
+
 
 }

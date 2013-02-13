@@ -48,8 +48,9 @@ public class ResultOutput extends Activity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		_context = this;
 		setContentView(R.layout.result_fragment);
+		_context = this;
+		
 		Button callButton = (Button)findViewById(R.id.callButton);
 		Button mapButton = (Button)findViewById(R.id.mapButton);
 		Boolean connected = WebInterface.getConnectionStatus(_context);
@@ -119,8 +120,8 @@ public class ResultOutput extends Activity implements OnClickListener{
 			TextView tempAddress = (TextView)findViewById(R.id.addressValue);
 			TextView tempCity = (TextView)findViewById(R.id.cityValue);
 			TextView tempState = (TextView)findViewById(R.id.stateValue);
-			Bundle resultIntent = getIntent().getExtras();
-			String imageText = resultIntent.getString("Picture");
+			//Bundle resultIntent = getIntent().getExtras();
+			//String imageText = resultIntent.getString("Picture");
 			
 			
 			
@@ -133,7 +134,7 @@ public class ResultOutput extends Activity implements OnClickListener{
 			
 			
 			
-			if(imageText == "cookies"){
+			/*if(imageText == "cookies"){
 				resultImageView.setImageResource(R.drawable.cookies);	
 			}else if(imageText == "candy"){
 				resultImageView.setImageResource(R.drawable.candy);
@@ -141,7 +142,7 @@ public class ResultOutput extends Activity implements OnClickListener{
 				resultImageView.setImageResource(R.drawable.pies);	
 			}else if(imageText == "cakes"){
 				resultImageView.setImageResource(R.drawable.cakes);
-			}
+			}*/
 		}
 	
 }
