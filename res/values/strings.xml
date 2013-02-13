@@ -1,0 +1,36 @@
+<resources>
+
+    <string name="app_name">Dessert Finder</string>
+    <string name="menu_settings">Settings</string>
+    <string name="rButton1">Cookies</string>
+    <string name="rButton2">Pies</string>
+    <string name="rButton3">Cakes</string>
+    <string name="rButton4">Candy</string>
+    <string name="blank_text">Place Holder</string>
+    <string name="intro_text">Let\'s find a dessert close to you!</string>
+    <string name="result_text">Here is what we found!</string>
+    <string name="old_text">No network! This is your last search</string>
+    <string name="no_conn_text">No network or old files found pleae close app!</string>
+	<string name="zipcode_prompt">Choose a Zipcode</string>
+	<string name="input_button_text">Submit</string>
+	<string name="phone_button_text">Call</string>
+	<string name="map_button_text">View Map</string>
+	<string name="spinner_label">Pick a zipcode</string>
+	<string name="radio_group_label">Choose a dessert</string>
+	<string name="map_image_text">Map</string>
+	<string name="dessert_image_text">Dessert</string>
+	<string name="title_label">Title:</string>
+	<string name="address_label">Address:</string>
+	<string name="city_label">City:</string>
+	<string name="state_label">State:</string>
+	<string name="phone_label">Phone Number:</string>
+    <string-array name="zipcode_arrays">
+        <item>98404</item>
+        <item>98101</item>
+        <item>10001</item>
+        <item>20056</item>
+        <item>30541</item>
+        <item>98446</item>
+        <item>98373</item>
+    </string-array>
+</resources>
