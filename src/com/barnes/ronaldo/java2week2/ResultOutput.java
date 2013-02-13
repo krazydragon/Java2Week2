@@ -49,7 +49,7 @@ public class ResultOutput extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		
 		_context = this;
-		//setContentView(R.layout.result);
+		setContentView(R.layout.result_fragment);
 		Button callButton = (Button)findViewById(R.id.callButton);
 		Button mapButton = (Button)findViewById(R.id.mapButton);
 		Boolean connected = WebInterface.getConnectionStatus(_context);

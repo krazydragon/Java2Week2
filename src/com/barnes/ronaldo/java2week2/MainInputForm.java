@@ -69,8 +69,8 @@ public class MainInputForm extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		setContentView(R.layout.activity_main_input_form);
-		 _inputLayout = (LinearLayout)findViewById(R.id.InputFormLayout);
+		setContentView(R.layout.input_fragment);
+		_inputLayout = (LinearLayout)findViewById(R.id.InputFormLayout);
 		_context = this;
 		_resulutIntent = new Intent(this, ResultOutput.class);
 		_oldLocation = new HashMap<String, String>();
