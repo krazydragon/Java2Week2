@@ -26,7 +26,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
+//import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -90,7 +90,7 @@ public class ResultOutput extends Activity implements OnClickListener{
 		case R.id.mapButton:
 			try {
 				
-				Intent mapIntent = new Intent(Intent.ACTION_VIEW,Uri.parse(_mapCoord));
+				Intent mapIntent = new Intent(this, MapOutput.class);
 				startActivity(mapIntent);
 		        } catch (ActivityNotFoundException e) {
 		        Log.e("MAP", "Map did not launch", e);
@@ -115,7 +115,7 @@ public class ResultOutput extends Activity implements OnClickListener{
 	}
 	
 	private void displayResults(){
-			ImageView resultImageView = (ImageView)findViewById(R.id.resultImageView);
+			//ImageView resultImageView = (ImageView)findViewById(R.id.resultImageView);
 			TextView tempTitle = (TextView)findViewById(R.id.titleValue);
 			TextView tempAddress = (TextView)findViewById(R.id.addressValue);
 			TextView tempCity = (TextView)findViewById(R.id.cityValue);

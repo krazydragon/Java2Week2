@@ -7,13 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
-public class MapFragment extends Fragment {
+public class MapFragment extends Fragment  {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 		super.onCreateView(inflater, container, savedInstanceState);
 		
-		RelativeLayout view = (RelativeLayout) inflater.inflate(R.layout.result, container, false);
+		RelativeLayout view = (RelativeLayout) inflater.inflate(R.layout.map, container, false);
 		
 		return view;
 	}
