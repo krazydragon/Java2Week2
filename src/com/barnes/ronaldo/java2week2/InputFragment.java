@@ -2,6 +2,8 @@ package com.barnes.ronaldo.java2week2;
 
 
 
+import com.barnes.ronaldo.java2week2.R;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ public class InputFragment extends Fragment implements OnClickListener  {
 	
 	public interface InputListener{
 		public void onDessertSearch(String zipCode, String category);
+		public void addZip();
 		
 	}
 	
@@ -38,12 +41,14 @@ public class InputFragment extends Fragment implements OnClickListener  {
 		Button pieButton = (Button)view.findViewById(R.id.pieButton);
 		Button cakeButton = (Button)view.findViewById(R.id.cakeButton);
 		Button candyButton = (Button)view.findViewById(R.id.candyButton);
+		
 		//Detect button click
 		cookieButton.setOnClickListener(this);
 		pieButton.setOnClickListener(this);
 		cakeButton.setOnClickListener(this);
 		candyButton.setOnClickListener(this);
 		inputButton.setOnClickListener(this);
+		
 		
 		return view;
 	}
@@ -77,6 +82,7 @@ public class InputFragment extends Fragment implements OnClickListener  {
 		case R.id.candyButton:
 			dessertView.setImageResource(R.drawable.candy);
 			break;
+		
 		
 		}
 	}

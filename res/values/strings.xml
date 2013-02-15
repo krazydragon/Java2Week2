@@ -33,4 +33,5 @@
         <item>98446</item>
         <item>98373</item>
     </string-array>
+        <string name="new_zip_hint">Enter new zipcode</string>
 </resources>

@@ -65,7 +65,7 @@ public class MainInputForm extends Activity implements InputListener{
 		
 		setContentView(R.layout.input_fragment);
 		_context = this;
-		_resulutIntent = new Intent(this, MapOutput.class);
+		_resulutIntent = new Intent(this, ResultOutput.class);
 		_oldLocation = new HashMap<String, String>();
 		Boolean connected = WebInterface.getConnectionStatus(_context);
 		
@@ -159,6 +159,13 @@ public class MainInputForm extends Activity implements InputListener{
 	public void onDessertSearch(String zipCode, String category) {
 		
 		getLocations(zipCode,category);
+	}
+
+	@Override
+	public void addZip() {
+		Intent editIntent = new Intent(this, ResultOutput.class);
+		startActivity(editIntent);
+		
 	}
 
 
